@@ -1,0 +1,169 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title>神在创造我的时候-火舞游戏</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" href="css/m.css?10" rel="stylesheet" />
+</head>
+<body><img id="wxsicon" src="http://i4.wanh5.com/item/1506/17/55814f65bd156_wx.jpg" width="0" height="0" style="position:absolute">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+    	function getQueryStringByName(name)
+    	{
+     		var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+     		if(result == null || result.length < 1)
+     		{
+        	return "";
+     		}
+     		return result[1];
+			}
+			
+    	var key;
+    	var realname;
+    	var dataList = [];
+    	dataList[1] = {"path":"images/1.jpg","txt":"呃啊啊啊啊啊啊!搞不清楚放了什麼總之放太多了啊顆顆顆","desc":"搞不清楚放了什麼總之放太多了啊顆顆顆"};
+    	dataList[2] = {"path":"images/2.jpg","txt":"少許迷糊...也想放點撒嬌呢!最後加上記憶力...噢,打翻了啦...","desc":"最後加上記憶力...噢,打翻了啦..."};
+    	dataList[3] = {"path":"images/3.jpg","txt":"人情味少許... 擇善固執兩匙....嗯...加點腹黑來反轉一下應該會挺有戲的噢","desc":"加點腹黑來反轉一下應該會挺有戲的噢"};
+    	dataList[4] = {"path":"images/4.jpg","txt":"首先加入兩匙霸氣,裝腔作勢少許!然後財運也來點...哎唷!放成加班運了啦","desc":"放成加班運了啦"};
+    	dataList[5] = {"path":"images/5.jpg","txt":"人見人愛一匙...書卷氣兩匙...神忌妒完美的人啊!送兩杯懶惰當成你人生的試煉吧哇哈~","desc":"送兩杯懶惰當成你人生的試煉吧哇哈~"};
+    	dataList[6] = {"path":"images/6.jpg","txt":"首先加入少許細心..很好,再5匙義氣!最後假裝失手把精力全丟進去吧!","desc":"最後假裝失手把精力全丟進去吧!"};
+    	dataList[7] = {"path":"images/7.jpg","txt":"厚臉皮一匙,佔有慾兩匙..最後加入少許貪吃呃啊呃啊啊呃噢","desc":"最後加入少許貪吃呃啊呃啊啊呃噢"};
+    	dataList[8] = {"path":"images/8.jpg","txt":"天真浪漫少許,也帶點可愛好了,喔喔喔!傻勁好像加太多了","desc":"喔喔喔!傻勁好像加太多了"};
+    	dataList[9] = {"path":"images/9.jpg","txt":"首先加入一匙幽默感,然後加入五匙自尊心,人氣也稍微放一點吧!","desc":"人氣也稍微放一點吧!"};
+    	dataList[10] = {"path":"images/10.jpg","txt":"嫌麻煩所以什麼也沒放 辛苦你了...","desc":"嫌麻煩所以什麼也沒放 辛苦你了..."};
+    	dataList[11] = {"path":"images/11.jpg","txt":"先放七匙智慧,哎唷,流鼻水了啦...精力用光了,就加點威而鋼來代替吧.","desc":"精力用光了,就加點威而鋼來代替吧."};
+    	dataList[12] = {"path":"images/12.jpg","txt":"先放14杯洞察力...再加上10杯規劃力... 哎呀,勇氣只剩一滴了啦","desc":"哎呀,勇氣只剩一滴了啦"};
+    	dataList[13] = {"path":"images/13.jpg","txt":"嗯...先來一匙聰明,兩匙外貌,太完美可不行噢,加少許矮小,啊....X放太多了><","desc":"加了少許矮小"};
+    	dataList[14] = {"path":"images/14.jpg","txt":"首先加入一匙幽默感,然後加入五匙自尊心,人氣也稍微放一點吧!","desc":"人氣也稍微放一點吧!"};
+    	dataList[15] = {"path":"images/15.jpg","txt":"可愛感覺不是很重要就不放了,加入一匙孤單吧,最後倒入74杯精力應該就差不多囉.","desc":"最後倒入74杯精力應該就差不多囉."};
+    	dataList[16] = {"path":"images/16.jpg","txt":"厚臉皮一匙,佔有慾兩匙..最後加入少許貪吃呃啊呃啊啊呃噢","desc":"最後加入少許貪吃呃啊呃啊啊呃噢"};
+    	dataList[17] = {"path":"images/17.jpg","txt":"32滴喜感 .50匙表演力!哎唷,剛手滑倒入整碗悶騷惹....","desc":"哎唷,剛手滑倒入整碗悶騷惹."};
+		  $(document).ready(function(){
+		  	if(location.href.indexOf('key=')>=0)
+		  	{
+		  		key = getQueryStringByName('key');
+		  		$('#result_content').attr('src',dataList[key]['path']);
+					$('.result_area h4').html("神在创造<span class=\"my_name\">"+decodeURIComponent(getQueryStringByName('real_name'))+"</span>的时候..");
+					$('.result_content_txt').html(dataList[key]['txt']);
+					$('.count').html(getCount()+'人');
+				
+		  		$('.loading').hide();
+		  		$('.input_area').hide();
+		  		$('#real_name').val('');
+		  		$('.result_area').show();
+		  		$('.result').show();
+		  		$('.restart_button').html('我要测验');
+		  	}
+		  	
+				$(document).on('mousedown','[hc]',function(e){$(this).addClass($(this).attr('hc') ? $(this).attr('hc') : '_hover');});
+				$(document).on('mouseup','[hc]',function(e){$(this).removeClass($(this).attr('hc') ? $(this).attr('hc') : '_hover');});
+				$(document).on('touchstart','[hc]',function(e){$(this).addClass($(this).attr('hc') ? $(this).attr('hc') : '_hover');return true;});
+				$(document).on('touchend','[hc]',function(e){$(this).removeClass($(this).attr('hc') ? $(this).attr('hc') : '_hover');return true;});
+				
+				$('.count').html(getCount()+'人');
+				
+				$('.start_button').click(function(){
+					if($('#real_name').val()=='')
+					{
+						alert('请输入您的姓名');
+						return false;
+					}
+					realname = $('#real_name').val();
+					getResultContent();
+				});
+				
+				$('.restart_button').click(function(){
+					$('.result').hide();
+					$('.input_area').show();
+					$('#real_name').val('');
+					$('.loading').show();
+					$('.result_area').hide();
+				});
+				
+				$('.share_button').click(function(){
+					ih5game.share();
+				});
+				
+				$('.focus_button').click(function(){
+					location.href = 'http://mp.weixin.qq.com/s?__biz=MzAwODE2MzEwMQ==&mid=202092460&idx=1&sn=5a901ce32da0c3f7bdb8230e5993beb3#rd';
+				});
+				$('.wodi_button').click(function(){
+					location.href = 'http://web.sswd.wanh5.com/?f=4003';
+				});
+				$('.zhuanqian_button').click(function(){
+					location.href = 'http://m.rehulu.com/apptask/invite?u=1314027';
+				});
+				$('.hoowu_button').click(function(){
+					location.href = 'http://51h5.com/?f=4003';
+				});
+			});
+			
+			function getCount()
+			{
+				var date = new Date();
+				var counts = parseInt((Math.floor(date.getTime()/1000)-1434522000)/0.2-790000+Math.random()*10,10);
+				if(counts<0)
+				{
+					counts = 1;
+				}
+				return counts;
+			}
+			
+			function getResultContent()
+			{
+				$('.restart_button').html('重新测验');
+				var charsCode = 0;
+				var str = realname;
+				for(var i=0;i<str.length;i++)
+				{
+					charsCode+= str.charCodeAt(i);
+				}
+				key = (parseInt(charsCode%17,10)+1)
+				$('#result_content').attr('src',dataList[key]['path']);
+				$('.result_area h4').html("神在创造<span class=\"my_name\">"+str+"</span>的时候..");
+				$('.result').show();
+				$('.input_area').hide();
+				$('.result_content_txt').html(dataList[key]['txt']);
+				$('.count').html(getCount()+'人');
+				setTimeout(function(){
+					$('.loading').hide();
+					$('.result_area').show();
+				},1500);
+				ih5game.setShare({
+		       title: '神在创造我的时候-火舞游戏',
+		       desc: '神在创造'+realname+'的时候，'+dataList[key]['desc'],
+		       query: 'key='+key+'&real_name='+encodeURIComponent(realname)
+		  	});
+			}
+		</script>
+<div class="wrapper">
+<img src="images/start_bg.jpg" width="100%" />
+<div class="input_area">
+<h3>神在创造我的时候...</h3>
+<input type="text" class="real_name" id="real_name" name="real_name" value="" placeholder="请输入您的姓名" />
+<div class="counter"><span id="count" class="count"></span>做了这个测验</div>
+<div class="start_button" hc="_hover">查看结果</div>
+<div class="hoowu_button" hc="_hover">火舞精彩</div>
+</div>
+<div class="result">
+<div class="loading">
+<img src="http://g.wanh5.com/logo_wr_b_220x100.png" class="logo" />
+<h4>结果分析中</h4>
+<img src="images/loading.gif" />
+</div>
+<div class="result_area">
+<h4></h4>
+<img id="result_content" src="" width="100%" />
+<div class="result_content_txt"></div>
+<div class="counter"><span id="count" class="count"></span>做了这个测验</div>
+<div class="restart_button" hc="_hover">重新测验</div>
+<div class="focus_button" hc="_hover">关注火舞</div>
+<div class="share_button" hc="_hover">分享给Ta</div>
+<div class="wodi_button" hc="_hover">抓住卧底</div>
+<div class="zhuanqian_button" hc="_hover">快去赚钱</div>
+<a href="http://www.51h5.com/app-download.html" target="_blank" class="logo_51h5"></a>
+</div>
+</div>
+</div>
+</body>
+</html>
